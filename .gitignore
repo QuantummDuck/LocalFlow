@@ -1,0 +1,25 @@
+# Build output
+.build/
+.xcbuild/
+.swiftpm/
+DerivedData/
+App/LocalFlow.xcodeproj/
+*.app
+*.dmg
+dist/
+
+# Models and personal data (never commit: large, and may contain your dictations)
+bench/data/
+bench/train/
+bench/out/
+bench/adapters/
+bench/models/
+bench/cases*.jsonl
+bench/corrections_*
+bench/.venv/
+models/
+
+# Python / macOS clutter
+__pycache__/
+*.pyc
+.DS_Store

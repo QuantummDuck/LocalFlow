@@ -1,0 +1,35 @@
+name: CI
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+
+concurrency:
+  group: ci-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  test:
+    name: Self-test
+    runs-on: macos-26
+    steps:
+      - uses: actions/checkout@v4
+      - name: Build flowbench
+        run: swift build -c release --product flowbench
+      - name: Run self-test
+        run: .build/release/flowbench selftest
+
+  app:
+    name: Build app
+    runs-on: macos-26
+    steps:
+      - uses: actions/checkout@v4
+      - name: Install XcodeGen
+        run: brew install xcodegen
+      - name: Build
+        run: |
+          cd App && xcodegen generate -q
+          xcodebuild -project LocalFlow.xcodeproj -scheme LocalFlow -configuration Release \
+            -destination 'platform=macOS,arch=arm64' -skipMacroValidation -skipPackagePluginValidation \
+            CODE_SIGNING_ALLOWED=NO build | tail -20

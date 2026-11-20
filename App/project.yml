@@ -1,0 +1,46 @@
+name: LocalFlow
+options:
+  deploymentTarget:
+    macOS: "15.0"
+packages:
+  FlowCore:
+    path: ..
+targets:
+  LocalFlow:
+    type: application
+    platform: macOS
+    sources: [LocalFlow]
+    dependencies:
+      - package: FlowCore
+        product: FlowCore
+    info:
+      path: LocalFlow/Info.plist
+      properties:
+        CFBundleName: LocalFlow
+        CFBundleDisplayName: LocalFlow
+        CFBundleShortVersionString: "1.0"
+        CFBundleIconFile: AppIcon
+        LSUIElement: true
+        LSApplicationCategoryType: public.app-category.productivity
+        NSMicrophoneUsageDescription: LocalFlow turns your voice into text on this Mac. Audio never leaves the device.
+    settings:
+      base:
+        PRODUCT_BUNDLE_IDENTIFIER: local.flow.LocalFlow
+        SWIFT_VERSION: "5.0"
+        CODE_SIGN_IDENTITY: "-"
+        CODE_SIGN_STYLE: Manual
+        ENABLE_HARDENED_RUNTIME: NO
+        ENABLE_APP_SANDBOX: NO
+        MACOSX_DEPLOYMENT_TARGET: "15.0"
+  flowbench:
+    type: tool
+    platform: macOS
+    sources: [../Sources/flowbench]
+    dependencies:
+      - package: FlowCore
+        product: FlowCore
+    settings:
+      base:
+        SWIFT_VERSION: "5.0"
+        CODE_SIGN_IDENTITY: "-"
+        MACOSX_DEPLOYMENT_TARGET: "15.0"

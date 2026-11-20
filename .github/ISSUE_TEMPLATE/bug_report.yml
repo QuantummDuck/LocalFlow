@@ -1,0 +1,50 @@
+name: Bug report
+description: Something isn't working as expected
+labels: [bug]
+body:
+  - type: markdown
+    attributes:
+      value: Thanks for taking the time to report a bug! Please don't include private dictations or audio.
+  - type: textarea
+    id: what
+    attributes:
+      label: What happened?
+      description: What did you do, what did you expect, and what happened instead?
+    validations:
+      required: true
+  - type: textarea
+    id: steps
+    attributes:
+      label: Steps to reproduce
+      placeholder: |
+        1. Open Notes
+        2. Hold fn and say "…"
+        3. …
+    validations:
+      required: true
+  - type: input
+    id: version
+    attributes:
+      label: LocalFlow version
+      description: Shown at the bottom of Settings.
+      placeholder: "1.0.0"
+    validations:
+      required: true
+  - type: input
+    id: macos
+    attributes:
+      label: macOS version and Mac model
+      placeholder: "macOS 26.1, MacBook Air M2 16 GB"
+    validations:
+      required: true
+  - type: dropdown
+    id: language
+    attributes:
+      label: Dictation language
+      options: [English, Portuguese, Mixed, Other]
+  - type: textarea
+    id: logs
+    attributes:
+      label: Logs or screenshots
+      description: "Optional. Logs: `log show --last 10m --predicate 'process == \"LocalFlow\"'`"
+      render: text
