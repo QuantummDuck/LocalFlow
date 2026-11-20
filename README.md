@@ -51,7 +51,7 @@
 
 ## Features
 
-| | |
+| Feature | What it does |
 |---|---|
 | 🎙️ **Dictate anywhere** | Hold <kbd>fn</kbd> to talk, release to paste at the cursor — in any app. Double-tap <kbd>fn</kbd> or press <kbd>fn</kbd> <kbd>Space</kbd> for hands-free. <kbd>Esc</kbd> cancels. |
 | ✨ **Smart cleanup** | A fine-tuned on-device model removes fillers, fixes punctuation, applies self-corrections and formats lists, emails and code-related text. A guard keeps your exact words whenever the model's output looks wrong. |
